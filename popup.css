@@ -1,14 +1,14 @@
 :root {
-  --primary-color: #4361ee;
-  --primary-light: #e0e7ff;
-  --secondary-color: #3f37c9;
-  --text-color: #2b2d42;
-  --light-text: #8d99ae;
-  --bg-color: #ffffff;
-  --border-color: #edf2f4;
-  --success-color: #4bb543;
-  --warning-color: #fca311;
-  --error-color: #ef233c;
+  --primary-color: #2ec4b6;
+  --primary-light: #d0f4ea;
+  --secondary-color: #0f9b8e;
+  --text-color: #264653;
+  --light-text: #7b8b94;
+  --bg-color: #f7fdfd;
+  --border-color: #b2dfdb;
+  --success-color: #00b894;
+  --warning-color: #ffe066;
+  --error-color: #ef476f;
 }
 
 * {
@@ -24,6 +24,7 @@ body {
   width: 350px;
   height: 500px;
   overflow: hidden;
+  transition: background-color 0.3s ease;
 }
 
 .container {
@@ -36,6 +37,13 @@ body {
 header {
   padding: 1.2rem 1.5rem 1rem;
   border-bottom: 1px solid var(--border-color);
+  background-color: var(--primary-light);
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 h1 {
@@ -51,13 +59,20 @@ h1 span {
 }
 
 .ai-badge {
-  background-color: var(--primary-light);
-  color: var(--primary-color);
+  background-color: var(--primary-color);
+  color: white;
   font-size: 0.7rem;
   font-weight: 600;
-  padding: 0.2rem 0.5rem;
+  padding: 0.2rem 0.6rem;
   border-radius: 1rem;
   margin-left: auto;
+  /* Removed animation */
+}
+
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.85; }
 }
 
 .loading {
@@ -69,6 +84,7 @@ h1 span {
   gap: 1rem;
   padding: 2rem;
   text-align: center;
+  animation: fadeIn 0.6s ease;
 }
 
 .spinner {
@@ -81,8 +97,7 @@ h1 span {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  to { transform: rotate(360deg); }
 }
 
 .main-content {
@@ -97,6 +112,7 @@ h1 span {
   border-radius: 0.5rem;
   padding: 1rem;
   margin: 1rem 0;
+  animation: fadeIn 0.4s ease;
 }
 
 .citation-header {
@@ -119,6 +135,11 @@ h1 span {
   font-size: 0.85rem;
   color: var(--text-color);
   cursor: pointer;
+  transition: all 0.3s;
+}
+
+.style-selector select:hover {
+  border-color: var(--primary-color);
 }
 
 .citation-output {
@@ -130,6 +151,7 @@ h1 span {
   font-size: 0.85rem;
   line-height: 1.5;
   border: 1px solid var(--border-color);
+  transition: background-color 0.3s;
 }
 
 .copy-btn {
@@ -146,12 +168,24 @@ h1 span {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  transition: background-color 0.2s;
+  transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
 .copy-btn:hover {
   background-color: var(--secondary-color);
 }
+
+/* 👇 Button bounce animation on click */
+.copy-btn:active {
+  transform: scale(0.95);
+  background-color: var(--secondary-color);
+}
+
+.copy-btn.glow {
+  box-shadow: 0 0 0.6rem var(--primary-color);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
 
 .metadata-section {
   margin-top: 1.5rem;
@@ -189,10 +223,16 @@ h1 span {
   font-size: 0.85rem;
   background-color: white;
   width: 100%;
+  transition: box-shadow 0.2s;
+}
+
+.metadata-item input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary-light);
 }
 
 .metadata-item input:read-only {
-  background-color: #f8f9fa;
+  background-color: #eefaf8;
 }
 
 .edit-btn {
