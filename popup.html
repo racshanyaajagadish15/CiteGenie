@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>On the Spot Citation Generator</title>
+  <link rel="stylesheet" href="popup.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>On the Spot <span>Citation Generator</span></h1>
+      <div class="ai-badge">AI-Powered</div>
+    </header>
+    
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <p>Analyzing page content...</p>
+    </div>
+    
+    <div class="main-content" id="main-content">
+      <div class="citation-preview">
+        <div class="citation-header">
+          <h3>Your Citation</h3>
+          <div class="style-selector">
+            <select id="citation-style">
+              <option value="apa">APA</option>
+              <option value="mla">MLA</option>
+              <option value="chicago">Chicago</option>
+            </select>
+          </div>
+        </div>
+        <div class="citation-output" id="citation-output">
+          <p>Select a style to generate citation</p>
+        </div>
+        <button id="copy-btn" class="copy-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          Copy to Clipboard
+        </button>
+      </div>
+      
+      <div class="metadata-section">
+        <h3>Detected Metadata</h3>
+        <div class="metadata-grid">
+          <div class="metadata-item">
+            <label>Title</label>
+            <input type="text" id="meta-title" readonly>
+          </div>
+          <div class="metadata-item">
+            <label>Author</label>
+            <input type="text" id="meta-author" readonly>
+          </div>
+          <div class="metadata-item">
+            <label>Website</label>
+            <input type="text" id="meta-website" readonly>
+          </div>
+          <div class="metadata-item">
+            <label>Publish Date</label>
+            <input type="text" id="meta-date" readonly>
+          </div>
+          <div class="metadata-item">
+            <label>URL</label>
+            <input type="text" id="meta-url" readonly>
+          </div>
+          <div class="metadata-item">
+            <label>Access Date</label>
+            <input type="text" id="meta-access-date" readonly>
+          </div>
+        </div>
+        <button id="edit-btn" class="edit-btn">Edit Metadata</button>
+      </div>
+    </div>
+    
+    <div class="success-message" id="success-message">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+      </svg>
+      <p>Citation copied to clipboard!</p>
+    </div>
+    
+    <footer>
+      <p>Need help? Hover over fields for formatting tips</p>
+    </footer>
+  </div>
+  
+  <canvas id="confetti-canvas"></canvas>
+  <script src="popup.js"></script>
+</body>
+</html>

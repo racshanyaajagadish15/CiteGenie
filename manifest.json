@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "CiteGenie",
+  "version": "1.0",
+  "description": "Instantly generate MLA, APA, and Chicago citations from any webpage",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_icon": "icons/icon48.png",
+    "default_title": "Generate Citation"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["activeTab", "scripting", "clipboardWrite"],
+  "web_accessible_resources": [{
+    "resources": ["popup.html", "popup.css", "popup.js"],
+    "matches": ["<all_urls>"]
+  }]
+}
